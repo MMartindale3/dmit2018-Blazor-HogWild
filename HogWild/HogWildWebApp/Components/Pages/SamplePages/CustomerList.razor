@@ -1,0 +1,37 @@
+﻿@page "/SamplePages/CustomerList"
+<PageTitle>Customer List</PageTitle>
+
+<h3>Customer List</h3>
+
+<header>
+    <h4>Search</h4>
+    <p>
+        <label>Last Name:</label>
+        <InputText id="lastName" style="width: 140px; background-color:lightgrey" @bind-Value="lastName"/>
+
+        <label>Phone #:</label>
+        <InputText id="phoneNumber" style="width: 140px; background-color:lightgrey" @bind-Value="phoneNumber" />
+
+        <button class="btn-success" @onclick="Search">Search</button>
+        <button class="btn-success" @onclick="New">New</button>
+    </p>
+</header>
+
+<footer>
+    @if(hasFeedback)
+    {
+        <blockquote>@feedbackMessage</blockquote>
+    }
+    @if (hasError)
+    {
+        <blockquote>
+            @errorMessage
+            <ul>
+                @foreach (string detail in errorDetails)
+                {
+                    <li>@detail</li>
+                }
+            </ul>
+        </blockquote>
+    }
+</footer>

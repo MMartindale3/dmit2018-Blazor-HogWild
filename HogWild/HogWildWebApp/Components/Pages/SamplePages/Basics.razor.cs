@@ -1,6 +1,4 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-
-namespace HogWildWebApp.Components.Pages.SamplePages
+﻿namespace HogWildWebApp.Components.Pages.SamplePages
 {
     public partial class Basics
     {
