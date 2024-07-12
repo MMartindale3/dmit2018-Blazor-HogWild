@@ -1,0 +1,53 @@
+﻿@page "/SamplePages/Basics"
+
+<PageTitle>Review Page Basics</PageTitle>
+
+<h1>Introduction to Blazor Page (Review)</h1>
+
+<div>
+    <h3>Demonstration of Using Methods</h3>
+
+    @if(string.IsNullOrWhiteSpace(myName))
+    {
+        <p>The random number is odd {@oddEvenValue}</p>
+    }
+    else
+    {
+        <p>@myName</p>
+    }
+    <button class="btn-success" @onclick="RandomValue">
+        RandomValue
+    </button>
+</div>
+<br />
+<hr />
+<br />
+<section class="setflex">
+    <div class="onethird">
+        <h3>Text Boxes</h3>
+
+        <label>
+            Enter an Email : <input type="email" @bind="email" placeholder="ex. shanek@nait.ca" />
+        </label>
+        <br /><br />
+        <label>
+            Enter a Password : <input type="password" @bind="password" placeholder="MyFakePassword" />
+        </label>
+        <br /><br />
+        <label>
+            Enter a Date : <input type="date" @bind="date" placeholder="2024-06-27" />
+        </label>
+        <br /><br />
+        <button class="btn-success" @onclick="TextSubmit">
+            Text Submit
+        </button>
+        <br /><br />
+        <h2>@feedback</h2>
+    </div>
+
+    <div class="onethird">
+        <h3>Radio Buttons, Checkboxes, and Text Area</h3>
+    </div>
+</section>
+
+
