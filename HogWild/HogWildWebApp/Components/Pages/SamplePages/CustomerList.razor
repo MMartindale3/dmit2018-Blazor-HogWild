@@ -1,4 +1,6 @@
 ﻿@page "/SamplePages/CustomerList"
+
+@using HogWildWebApp.Components.Layout
 @using Microsoft.AspNetCore.Components.QuickGrid
 
 <PageTitle>Customer List</PageTitle>
@@ -8,12 +10,12 @@
 <header>
     <h4>Search</h4>
     <p>
-        <label>Last Name:</label>
-        <InputText id="lastName" style="width: 140px; background-color:lightgrey" @bind-Value="lastName" />
+        <label>Last Name : </label>
+        <InputText id="lastName" style="width: 140px; background-color:lightgray" @bind-Value="lastName" />
 
-        <label>Phone #:</label>
-        <InputText id="phoneNumber" style="width: 140px; background-color:lightgrey" @bind-Value="phoneNumber" />
-
+        <label>Phone # : </label>
+        <InputText id="phoneNumber" style="width: 140px; background-color:lightgray" @bind-Value="phoneNumber" />
+    
         <button class="btn-success" @onclick="Search">Search</button>
         <button class="btn-success" @onclick="New">New</button>
     </p>
@@ -22,12 +24,13 @@
 <body>
     @if (Customers.Count == 0)
     {
-        <p><em>No customers were found that match your search.</em></p>
+        <p><em>No customers were found for your serach criteria</em></p>
     }
+
     else
     {
         <div class="page-size-chooser">
-            Items per page:
+            Items per page : 
             <select @bind="Pagination.ItemsPerPage">
                 <option>2</option>
                 <option>10</option>
@@ -35,35 +38,37 @@
                 <option>100</option>
             </select>
         </div>
+
+
+        <QuickGrid Items="@Customers.AsQueryable()" Pagination="@Pagination" Class="quickgrid-row-divider">
+            <TemplateColumn>
+                <button class="btn-primary" @onclick="() => EditCustomer(context.CustomerID)">Edit</button>
+                <button class="btn-primary" @onclick="() => NewInvoice(context.CustomerID)">New Invoice</button>
+            </TemplateColumn>
+            <PropertyColumn Property="@(p => p.FirstName)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.LastName)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.City)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.Phone)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.Email)" Sortable="true" />
+            <PropertyColumn Property="@(p => p.TotalSales)" Sortable="true" />
+        </QuickGrid>
+
+        <Paginator State="@Pagination" />
     }
-
-    <QuickGrid Items="@Customers.AsQueryable()" Pagination="@Pagination" class="quickgrid-row-divider">
-        <TemplateColumn>
-            <button class="btn-primary" @onclick="() => EditCustomer(context.CustomerID)">Edit</button>
-            <button class="btn-primary" @onclick="() => NewInvoice(context. CustomerID)">New Invoice</button>
-        </TemplateColumn>
-        <PropertyColumn Property="@(p => p.FirstName)" Sortable="true" />
-        <PropertyColumn Property="@(p => p.LastName)" Sortable="true" />
-        <PropertyColumn Property="@(p => p.City)" Sortable="true" />
-        <PropertyColumn Property="@(p => p.Phone)" Sortable="true" />
-        <PropertyColumn Property="@(p => p.Email)" Sortable="true" />
-        <PropertyColumn Property="@(p => p.TotalSales)" Sortable="true" />
-    </QuickGrid>
-
-    <Paginator State="@Pagination" />
 </body>
 
 <footer>
-    @if (hasFeedback)
+    @if(hasFeedback)
     {
         <blockquote>@feedbackMessage</blockquote>
     }
-    @if (hasError)
+
+    @if(hasError)
     {
         <blockquote>
             @errorMessage
             <ul>
-                @foreach (string detail in errorDetails)
+                @foreach(string detail in errorDetails)
                 {
                     <li>@detail</li>
                 }

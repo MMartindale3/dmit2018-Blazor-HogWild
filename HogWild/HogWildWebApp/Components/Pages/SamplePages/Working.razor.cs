@@ -1,29 +1,28 @@
-﻿#nullable disable
-using HogWildSystem.BLL;
+﻿using HogWildSystem.BLL;
 using HogWildSystem.ViewModels;
 using Microsoft.AspNetCore.Components;
+
 namespace HogWildWebApp.Components.Pages.SamplePages
 {
     public partial class Working
     {
         #region Fields
-        private string feedback;
+
         private WorkingVersionsView workingVersionsView = new WorkingVersionsView();
+
+        private string feedback;
+
         #endregion
 
-        #region Properties
         [Inject]
         protected WorkingVersionsService WorkingVersionsService { get; set; }
-        #endregion
 
-        #region Methods
         private void GetWorkingVersions()
         {
             try
             {
                 workingVersionsView = WorkingVersionsService.GetWorkingVersion();
             }
-            #region catch all exceptions
             catch (AggregateException ex)
             {
                 foreach (var error in ex.InnerExceptions)
@@ -31,24 +30,27 @@ namespace HogWildWebApp.Components.Pages.SamplePages
                     feedback = error.Message;
                 }
             }
-
-            catch (ArgumentNullException ex)
+            catch (ArgumentException ex)
             {
                 feedback = GetInnerException(ex).Message;
             }
-
             catch (Exception ex)
             {
                 feedback = GetInnerException(ex).Message;
             }
-            #endregion
         }
+
         private Exception GetInnerException(Exception ex)
         {
             while (ex.InnerException != null)
+            {
                 ex = ex.InnerException;
+
+            }
+
             return ex;
         }
-        #endregion
+
+
     }
 }

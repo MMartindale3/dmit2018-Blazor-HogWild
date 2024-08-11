@@ -4,11 +4,11 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-HogWildWebApp-423ff4c2-dbd0-445b-8049-0b1b7b70108e</UserSecretsId>
+    <UserSecretsId>aspnet-HogWildWebApp-8cdf0840-2f0c-4de1-881b-399f025a6cd3</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.12.0" />
+    <PackageReference Include="BlazorDialog" Version="3.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.7" />
@@ -19,7 +19,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="MudBlazor" Version="7.1.1" />
-    <PackageReference Include="System.Formats.Asn1" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>

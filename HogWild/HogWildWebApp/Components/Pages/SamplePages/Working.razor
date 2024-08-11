@@ -1,25 +1,30 @@
 ﻿@page "/SamplePages/Working"
 
-<h3>Working</h3>
+<h3>WorkingVersions</h3>
+
 <div>
     @if (workingVersionsView.VersionId > 0)
     {
-        <label>Version ID: @workingVersionsView.VersionId</label>
+        <label>Version ID : @workingVersionsView.VersionId</label>
         <br />
-        <label>Major: @workingVersionsView.Major</label>
+        <label>Major : @workingVersionsView.Major</label>
         <br />
-        <label>Minor: @workingVersionsView.Minor</label>
+        <label>Minor : @workingVersionsView.Minor</label>
         <br />
-        <label>Build: @workingVersionsView.Build</label>
+        <label>Build : @workingVersionsView.Build</label>
         <br />
-        <label>Revision: @workingVersionsView.Revision</label>
+        <label>Revision : @workingVersionsView.Revision</label>
         <br />
-        <label>Date: @workingVersionsView.AsOfDate</label>
+        <label>Date : @workingVersionsView.AsOfDate</label>
         <br />
-        <label>Comments: @workingVersionsView.Comments</label>
+        <label>Comments : @workingVersionsView.Comments</label>
+        <br />
         <br />
     }
     <p>
-        <button class="btn-success" @onclick="GetWorkingVersions">Working Versions</button>
+        <button class="btn-success" @onclick="GetWorkingVersions">
+            Working Versions
+        </button>
     </p>
 </div>
+

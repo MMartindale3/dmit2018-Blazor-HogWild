@@ -2,7 +2,7 @@
 {
     public static class BlazorHelperClass
     {
-        public static Exception GetInnerException(System.Exception ex)
+        public static Exception GetInnerException(Exception ex)
         {
             while (ex.InnerException != null)
             {

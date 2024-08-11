@@ -2,10 +2,8 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using HogWildSystem.BLL;
 using HogWildSystem.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace HogWildSystem.DAL;
 
@@ -14,7 +12,6 @@ internal partial class HogWildContext : DbContext
     public HogWildContext(DbContextOptions<HogWildContext> options)
         : base(options)
     {
-
     }
 
     public virtual DbSet<Category> Categories { get; set; }
@@ -106,7 +103,7 @@ internal partial class HogWildContext : DbContext
         modelBuilder.Entity<WorkingVersion>(entity =>
         {
             entity.Property(e => e.VersionId).HasDefaultValue(1);
-            entity.Property(e => e.AsOfDate).HasDefaultValue(new DateTime(2023, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified));
+            entity.Property(e => e.AsOfDate).HasDefaultValueSql("(((2024)-(7))-(1))");
             entity.Property(e => e.Build).HasDefaultValue(4);
             entity.Property(e => e.Comments)
                 .HasDefaultValue("Initial Release")

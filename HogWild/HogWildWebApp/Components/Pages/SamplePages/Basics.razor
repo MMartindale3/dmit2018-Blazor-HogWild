@@ -42,11 +42,62 @@
             Text Submit
         </button>
         <br /><br />
-        <h2>@feedback</h2>
+        <h2>@leftFeedback</h2>
     </div>
 
     <div class="onethird">
         <h3>Radio Buttons, Checkboxes, and Text Area</h3>
+        <br />
+        <label>Select your favourite meal using a foreach loop</label>
+        <br />
+        @foreach(string item in @Meals)
+        {
+            <input type="radio" name="meal" value="@item" @onchange="HandleMealSelection" checked="@(item == meal)" /><span>&nbsp;&nbsp;</span> @item
+            <br />
+        }
+        <br />
+        <label><input type="checkbox" @bind="@acceptanceBox" />&nbsp;&nbsp;I agree to terms</label>
+        <br /><br />
+        <textarea rows="5" cols="50" placeholder="Enter message" @bind="messageBody"></textarea>
+        <br /><br />
+        <button class="btn-success" @onclick="RadioCheckAreaSubmit">Radio / Check / Area Submit</button>
+        <br /><br />
+        <h2>@middleFeedback</h2>
+    </div>
+
+    <div class="onethird">
+        <h3>List and Slider</h3>
+        <label>
+            Select your favourite ride
+            <select @bind="myRide">
+                <option value="0">Select Ride...</option>
+                @foreach(var ride in @rides)
+                {
+                    <option value="@ride.ValueID">@ride.DisplayText</option>
+                }
+            </select>
+        </label>
+        <br /><br />
+        <label>
+            Select your favourite Vacation Spot
+
+            <select @bind="vacationSpot">
+                <option value="No selection">Select a Spot...</option>
+                @foreach(var spot in vacationSpots)
+                {
+                    <option value="@spot">@spot</option>
+                }
+            </select>
+        </label>
+        <br /><br />
+        <label>
+            Rate the form control review (bad to good)
+            <input type="range" min="0" max="10" step="1" @bind=reviewRating />
+        </label>
+        <br /><br />
+        <button class="btn-success" @onclick="ListSliderSubmit">List & Slider Submit</button>
+        <br /><br />
+        <h2>@rightFeedback</h2>
     </div>
 </section>
 

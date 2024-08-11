@@ -12,10 +12,10 @@
     margin-bottom: 1rem;
 }
 
-.page-size-chooser select {
-    margin: 0 1rem;
-    padding: 0.25rem 0.5rem;
-}
+    .page-size-chooser select {
+        margin: 0 1rem;
+        padding: 0.25rem 0.5rem;
+    }
 
 ::deep .quickgrid-row-divider tbody tr {
     border-width: 1px;

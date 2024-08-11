@@ -1,11 +1,10 @@
+using HogWildSystem;
 using HogWildWebApp.Components;
 using HogWildWebApp.Components.Account;
 using HogWildWebApp.Data;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using HogWildSystem;
 using MudBlazor.Services;
 
 namespace HogWildWebApp
@@ -33,14 +32,15 @@ namespace HogWildWebApp
                 .AddIdentityCookies();
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-
             var connectionStringHogWild = builder.Configuration.GetConnectionString("OLTP-DMIT2018");
             
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
-            builder.Services.AddBackendDependencies(options => options.UseSqlServer(connectionStringHogWild));
+            builder.Services.AddBackendDependencies(options =>
+                    options.UseSqlServer(connectionStringHogWild));
 
             builder.Services.AddMudServices();
+            builder.Services.AddBlazorDialog();
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
